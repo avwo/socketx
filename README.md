@@ -1,4 +1,10 @@
 # socketx
+[![NPM version](https://img.shields.io/npm/v/socketx.svg?style=flat-square)](https://npmjs.org/package/socketx)
+[![node version](https://img.shields.io/badge/node.js-%3E=_6.0-green.svg?style=flat-square)](http://nodejs.org/download/)
+[![build status](https://img.shields.io/travis/avwo/socketx.svg?style=flat-square)](https://travis-ci.org/avwo/socketx)
+[![Test coverage](https://codecov.io/gh/avwo/socketx/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/gh/avwo/socketx)
+[![License](https://img.shields.io/npm/l/socketx.svg?style=flat-square)](https://www.npmjs.com/package/socketx)
+
 socketx用于在Node中建立socket连接及连接池，使用简单，且支持设置代理等自定义建立连接的方式。
 
 # 安装

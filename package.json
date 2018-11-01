@@ -1,6 +1,6 @@
 {
   "name": "socketx",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "socket pool",
   "scripts": {
     "lint": "eslint *.js lib test",
