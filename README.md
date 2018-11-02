@@ -76,8 +76,8 @@ const { connect } = require('socketx');
 
 (async () => {
 	const proxy = {
-    host: '127.0.0.1',
-    port: 8899,
+		host: '127.0.0.1',
+		port: 8899,
 	};
 	const client = await connect({
 		host: '127.0.0.1',
