@@ -5,7 +5,7 @@
 [![Test coverage](https://codecov.io/gh/avwo/socketx/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/gh/avwo/socketx)
 [![License](https://img.shields.io/npm/l/socketx.svg?style=flat-square)](https://www.npmjs.com/package/socketx)
 
-socketx用于在Node中建立socket连接及连接池，使用简单，且支持设置代理等自定义建立连接的方式。
+socketx用于在Node中建立socket连接及连接池，使用简单，且支持设置http代理及自定义建立连接的方式。
 
 # 安装
 
@@ -104,6 +104,10 @@ const { connect, Pool } = require('socketx');
 options:
 - host: 服务器的ip或域名
 - port: 服务器的端口
+- proxy: 设置http代理
+	- host: 代理服务器ip或域名
+	- port: 代理服务器端口
+	- headers: 自定义代理请求头
 - createConnection(options): 设置代理等自定义建立连接方式，options为connect(`options`)，返回 `Promise` 或 `socket` 对象
 - connectTimeout: 可选，socket连接超时毫秒数，默认为3000ms，如果值为非正数，表示不设置超时
 - idleTimeout：可选，设置socket的空闲超时毫秒数，socket在idleTimeout时间内没有传输数据将自动销毁，默认为0，不设置idleTimeout时间，如果值为非正数，表示不设置超时
@@ -115,6 +119,10 @@ options:
 
 options:
 - max: 可选，设置连接池的连接数上限，默认为0，不限制(非正数表示不设置上限)
+- proxy: 设置http代理，`pool.connect` 里面的 `proxy` 参数优先级高于该配置
+	- host: 代理服务器ip或域名
+	- port: 代理服务器端口
+	- headers: 自定义代理请求头
 - connectTimeout: 可选，设置连接池里面默认socket连接超时毫秒数，默认为3000ms，如果值为非正数，表示不设置超时，该设置可以通过 `pool.connect(opts)` 的 `opts.connectTimeout` 修改
 - idleTimeout：可选，设置连接池里面默认socket的空闲超时毫秒数，socket在idleTimeout时间内没有传输数据将自动销毁，默认为0，不设置idleTimeout时间，如果值为非正数，表示不设置超时，该设置可以通过 `pool.connect(opts)` 的 `opts.idleTimeout` 修改
 - createConnection: 可选，主要用于设置代理等自定义建立连接方式，该设置可以通过 `pool.connect(opts)` 的 `opts.createConnection` 修改
@@ -123,6 +131,10 @@ options:
 options:
 - host: 服务器的ip或域名
 - port: 服务器的端口
+- proxy: 设置http代理，优先级高于构造函数的 `proxy` 参数
+	- host: 代理服务器ip或域名
+	- port: 代理服务器端口
+	- headers: 自定义代理请求头
 - name: 可选，连接名称，主要用于协助设置缓存的key
 - createConnection(options): 设置代理等自定义建立连接方式，options为connect(`options`)，返回 `Promise` 或 `socket` 对象
 - connectTimeout: 可选，socket连接超时毫秒数，默认为3000ms，如果值为非正数，表示不设置超时
