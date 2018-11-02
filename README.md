@@ -72,30 +72,13 @@ const pool = new Pool({ max: 3 });
 ```
 通过代理到[whistle](https://github.com/avwo/whistle)：
 ``` js
-const http = require('http');
 const { connect } = require('socketx');
 
-const WHISTLE_PORT = 8899; // 假设本地whistle的端口号为8899
-const createConnection = ({ host, port }) => {
-	const options = {
-    method: 'CONNECT',
-    host: '127.0.0.1',
-    port: WHISTLE_PORT,
-    path: `${host}:${port}`,
-    agent: false,
-    headers: {
-      'x-whistle-policy': 'tunnel', // 必填，否则无法查看抓包数据
-    }
-  };
-  return new Promise((resolve, reject) => {
-    const client = http.request(options);
-    client.once('connect', (req, socket) => resolve(socket));
-    client.once('error', reject);
-    client.end();
-  });
-};
-
 (async () => {
+	const proxy = {
+		host: '127.0.0.1',
+    port: 8899,
+	};
 	const client = await connect({
 		host: '127.0.0.1',
 		port: 9999,
