@@ -9,7 +9,7 @@ const {
 
 describe('pool', async () => {
   before(startServer);
-  const pool = new Pool({ max: 3 });
+  const pool = new Pool({ max: 3, proxy: {} });
   it('#count', async () => {
     const sockets = [];
     sockets.push(await pool.connect({
