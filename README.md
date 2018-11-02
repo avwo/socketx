@@ -82,7 +82,7 @@ const { connect } = require('socketx');
 	const client = await connect({
 		host: '127.0.0.1',
 		port: 9999,
-		createConnection,
+		proxy,
 	});
 	client.on('data', (data) => {
 		console.log(`${data}`);
