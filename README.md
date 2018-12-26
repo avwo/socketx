@@ -50,7 +50,7 @@ const { connect } = require('socketx');
 
 ```
 连接池代码：
-> 连接池的缓存key是通过 `connect(options)` 里面参数 `host:port[:name]` 或 `path[:name]` 或 `:name` 生成，其中 `name` 默认为空；可以通过name控制相同 `host:port` 或 `path` 长连接的缓存个数
+> 连接池的缓存key是通过 `connect(options)` 里面参数 `host:port[:name]` 或 `path[:name]` 生成，其中 `name` 默认为空；可以通过name控制相同 `host:port` 或 `path` 长连接的缓存个数
 ```js
 const { Pool } = require('socketx');
 
@@ -113,7 +113,7 @@ options:
 - idleTimeout：可选，设置socket的空闲超时毫秒数，socket在idleTimeout时间内没有传输数据将自动销毁，默认为0，不设置idleTimeout时间，如果值为非正数，表示不设置超时
 - path: 同[socket](https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_connect_path_connectlistener)
 
-其中 `host:port`、`path`、`createConnection` 至少要存在一个。
+其中 `host:port`、`path` 至少要存在一个。
 
 ### new Pool(options)
 
@@ -140,4 +140,4 @@ options:
 - idleTimeout：可选，设置socket的空闲超时毫秒数，socket在idleTimeout时间内没有传输数据将自动销毁，默认为0，不设置idleTimeout时间，如果值为非正数，表示不设置超时
 - path: 同[socket](https://nodejs.org/dist/latest-v10.x/docs/api/net.html#net_socket_connect_path_connectlistener)
 
-其中 `host:port`、`path`、`name&createConnection` 至少要存在一个，如果相同的 `host:port` 要缓存池里面建立多条连接可以采用设置 `name` 的方式，因为缓存的key是通过按优先顺序 `host:port[:name]` 或 `path[:name]` 或 `:name` 生成，其中 `name` 默认为空。
+其中 `host:port`、`path` 至少要存在一个，如果相同的 `host:port` 要缓存池里面建立多条连接可以采用设置 `name` 的方式区分，因为缓存的key是通过按优先顺序 `host:port[:name]` 或 `path[:name]` 生成，其中 `name` 默认为空。
