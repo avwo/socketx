@@ -116,6 +116,7 @@ options:
 其中 `host:port`、`path` 至少要存在一个。
 
 ### new Pool(options)
+根据 `host:port:name` 自动缓存连接，确保每个key至多只有一个连接。
 
 options:
 - proxy: 设置http代理，`pool.connect` 里面的 `proxy` 参数优先级高于该配置
